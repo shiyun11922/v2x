@@ -1,0 +1,31 @@
+# 生产环境配置文件
+
+server:
+  port: 8081     # Springboot占用端口（生产环境）
+
+spring:
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://172.17.204.222:3306/zjgs?serverTimezone=Asia/Shanghai&characterEncoding=utf8&useUnicode=true&useSSL=false
+    username: zjgs
+    password: Zjic2021
+  batch:
+    initialize-schema=ALWAYS:
+  devtools:
+    restart:
+      enabled: true     # 开启热更新
+traffic:
+  redirect:
+    host: http://localhost:8080
+  auth:
+    external:
+      url: http://47.101.65.157/zjgs/admin/third/check
+httpclient:
+  maxTotal: 20
+  defaultMaxPerRoute: 20
+  connectTimeout: 60000
+  connectionRequestTimeout: 60000
+  socketTimeout: 120000
+v2x:
+  skip:
+    auth: true

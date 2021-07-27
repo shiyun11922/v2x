@@ -1,0 +1,24 @@
+
+1. 需要下载JDK， 可以去oracle下载 jdk8
+
+2. 打包需要使用apache maven, 下载地址 https://maven.apache.org/download.cgi
+    安装后就可以，使用 build.sh 里面的指令就可以编译打包
+3. 代码就是 output/seed-*.jar
+
+4. 启动就是  java -jar output/seed*.jar --spring.profiles.active=dev
+
+5. 如何是后台进程的话，使用nohup java -jar output/seed*.jar --spring.profiles.active=dev &
+
+注意
+1. 务必保持这个input目录 (目录格式参考下图)
+    /v1/batch/todb 这个接口是将这个目录下的 inputdata.csv 数据灌进数据表，traffic_core_data
+    在灌数据前，请务必将时间数据 更改成 'yyyy-MM-dd HH:mm:ss'格式的数据
+
+    /
+    |--input
+    |--seed-1.0.0.jar
+
+
+2. 再灌数据之后，可以使用下面这个sql将路段名表更新一下
+    delete from traffic_road_name
+    insert into traffic_road_name(road_section_name) select distinct road_section_name from traffic_core_data;

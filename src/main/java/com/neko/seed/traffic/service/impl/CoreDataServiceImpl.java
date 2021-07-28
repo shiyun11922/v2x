@@ -255,5 +255,12 @@ public class CoreDataServiceImpl extends ServiceImpl<CoreDataMapper, CoreData> i
 
     }
 
+    public List<CoreData> topRate2() {
+
+        List<CoreData> coreData = coreDataMapper.selectTopRate();
+
+        return coreData;
+
+    }
 
 }

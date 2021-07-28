@@ -14,6 +14,7 @@ public class MapEntity {
     private String SXXBS;
     private Double Shape_Leng;
     private String UserID;
+    private Integer flow;
     private List<Double[]> shape;
 
     public String getBS() {
@@ -102,6 +103,14 @@ public class MapEntity {
 
     public void setShape(List<Double[]> shape) {
         this.shape = shape;
+    }
+
+    public Integer getFlow() {
+        return flow;
+    }
+
+    public void setFlow(Integer flow) {
+        this.flow = flow;
     }
 
     @Override

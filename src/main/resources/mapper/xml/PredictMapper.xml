@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neko.seed.traffic.mapper.PredictMapper">
+
+    <select id="top22"  resultType="com.neko.seed.traffic.entity.Predict">
+        select * from
+        (select distinct rec_road_section_name, nums, rec_time
+        from traffic_predict
+        order by rec_time desc) a
+        group by a.rec_road_section_name
+        order by a.rec_time desc
+        limit 22
+    </select>
+</mapper>

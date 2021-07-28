@@ -29,4 +29,6 @@ public interface CoreDataService extends IService<CoreData> {
 
     List<CoreData> topRate();
 
+    List<CoreData> topRate2();
+
 }

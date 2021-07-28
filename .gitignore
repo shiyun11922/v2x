@@ -22,4 +22,3 @@ buildNumber.properties
 #idea
 .idea/
 *.iml
-target/

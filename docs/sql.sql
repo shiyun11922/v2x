@@ -77,6 +77,16 @@ create table `traffic_service_todo` (
 	`need_todo` varchar(200)  DEFAULT NULL  COMMENT '管控措施',
 	`rec_time`  datetime NOT NULL DEFAULT CURRENT_TIMESTAMP()  COMMENT '记录时间'
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+# 流量预测表
+create table `traffic_predict` (
+	`id` int unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	`rec_road_section_name` varchar(200) DEFAULT NULL  COMMENT '路段名称',
+	`nums` int  DEFAULT NULL  COMMENT '预测流量',
+	`rec_time`  datetime NOT NULL DEFAULT CURRENT_TIMESTAMP()  COMMENT '记录时间'
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
 insert into traffic_service_todo(rec_road_section_name,need_todo) values ('红垦枢纽_机场互通_杭州方向', '垦枢纽_机场互通_杭州方向发生拥堵，建议将限速降低到80km/h');
 
 ## 跑批所需要建立的表

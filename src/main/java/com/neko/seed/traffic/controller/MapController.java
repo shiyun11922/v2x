@@ -4,8 +4,11 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.neko.seed.auth.annotation.AuthRequest;
 import com.neko.seed.base.entity.Result;
+import com.neko.seed.traffic.entity.CoreData;
 import com.neko.seed.traffic.entity.EdgeEntity;
 import com.neko.seed.traffic.entity.MapEntity;
+import com.neko.seed.traffic.service.CoreDataService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +21,10 @@ import java.util.Scanner;
 @RestController
 @RequestMapping("/traffic/map")
 public class MapController {
+
+
+    @Autowired
+    private CoreDataService coreDataServiceImpl;
 
     @GetMapping("")
     @AuthRequest
@@ -34,11 +41,13 @@ public class MapController {
             for (int i = 0; i < objects.size(); i++) {
                 JSONObject object = objects.getJSONObject(i);
                 MapEntity m = JSONObject.toJavaObject(object, MapEntity.class);
+                CoreData cd = coreDataServiceImpl.getDataByName(m.getNAME());
+                if(cd != null){
+                    Double total = cd.getNumsBlueCar() + cd.getNumsYellCar();
+                    m.setFlow(total.intValue());
+                }
                 mapEntities.add(m);
             }
-
-
-
 
         } catch (Exception e) {
             e.printStackTrace();

@@ -1,12 +1,12 @@
 package com.neko.seed.traffic.controller;
 
 
-import com.neko.seed.auth.annotation.Auth;
 import com.neko.seed.auth.annotation.AuthRequest;
 import com.neko.seed.base.entity.Result;
 import com.neko.seed.traffic.entity.CoreData;
 import com.neko.seed.traffic.entity.CoreDataVO;
 import com.neko.seed.traffic.entity.RoadName;
+import com.neko.seed.traffic.entity.TopRateVO;
 import com.neko.seed.traffic.service.CoreDataService;
 import com.neko.seed.traffic.service.RoadNameService;
 import org.slf4j.Logger;
@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 /**
  * <p>
@@ -69,6 +70,11 @@ public class CoreDataController {
         return new Result().success(result);
     }
 
+    @PostMapping("/predictSave")
+    public Result predictSave(@RequestBody List<CoreDataVO> dataVOS) {
+        Map<String, List<CoreDataVO>> result = coreDataServiceImpl.save(dataVOS);
+        return new Result().success(result);
+    }
 
     /**
      * 登陆接口
@@ -98,7 +104,26 @@ public class CoreDataController {
 
     @GetMapping("/topRate")
     public Result topRate() {
-        return new Result().success(coreDataServiceImpl.topRate());
+
+        List<CoreData> coreData = coreDataServiceImpl.topRate2();
+
+        ArrayList<TopRateVO> topRateVOS = new ArrayList<>();
+        coreData.stream().forEach(c -> {
+
+            TopRateVO v = new TopRateVO();
+            v.setRoadSectionName(c.getRoadSectionName());
+            v.setNumsBlueCar(c.getNumsBlueCar().intValue());
+            v.setNumsYellCar(c.getNumsYellCar().intValue());
+            v.setNumsTotalCar(c.getTotalCars().intValue());
+
+            topRateVOS.add(v);
+        });
+
+        List<TopRateVO> collects = topRateVOS.stream().sorted((o1, o2) -> {
+            return o2.getNumsTotalCar() - o1.getNumsTotalCar();
+        }).collect(Collectors.toList());
+
+        return new Result().success(collects);
     }
 
     @GetMapping("/roads")
@@ -110,6 +135,7 @@ public class CoreDataController {
                 .forEach(r -> {
                     roadNames.add(r.getRoadSectionName());
                 });
+
         return new Result().success(roadNames);
     }
 
@@ -118,4 +144,7 @@ public class CoreDataController {
 
         return new Result().success("todo");
     }
+
+
+
 }

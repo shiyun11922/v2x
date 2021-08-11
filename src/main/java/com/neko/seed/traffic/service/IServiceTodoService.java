@@ -13,4 +13,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface IServiceTodoService extends IService<ServiceTodo> {
 
+    public ServiceTodo getLeastOne(String name);
 }

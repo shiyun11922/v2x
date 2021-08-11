@@ -2,4 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.neko.seed.traffic.mapper.SituationWarningMapper">
 
+    <select id="listRecently"  resultType="com.neko.seed.traffic.entity.SituationWarning">
+        select * from traffic_situation_warning order by rec_time desc limit #{nums};
+    </select>
 </mapper>

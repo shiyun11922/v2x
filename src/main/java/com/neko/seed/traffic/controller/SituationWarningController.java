@@ -84,9 +84,7 @@ public class SituationWarningController {
     public Result listAll2(String roadname) {
 
         if (StringUtils.isEmpty(roadname)) {
-            QueryWrapper<SituationWarning> wrapper = new QueryWrapper<>();
-            wrapper.lambda().orderByDesc(SituationWarning::getRecTime);
-            List<SituationWarning> list = situationWarningServiceImpl.list();
+            List<SituationWarning> list = situationWarningServiceImpl.listRecent50();
             List<SituationWarning> result = list.stream().limit(50).collect(Collectors.toList());
             return new Result().success(result);
         }

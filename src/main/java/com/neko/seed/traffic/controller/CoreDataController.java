@@ -91,7 +91,7 @@ public class CoreDataController {
     @AuthRequest
     public Result all2(String roadname, String startTimeStamp, String endTimeStamp) {
         Objects.requireNonNull(roadname, "路段明细明细信息，路段名称不能为空");
-        LOGGER.info("startTimeStamp={}, endTimeStamp={}");
+        LOGGER.info("startTimeStamp={}, endTimeStamp={}", startTimeStamp, endTimeStamp);
         if (StringUtils.isEmpty(startTimeStamp) || StringUtils.isEmpty(endTimeStamp)) {
             return new Result().success(coreDataServiceImpl.getDataListByName(roadname));
         }

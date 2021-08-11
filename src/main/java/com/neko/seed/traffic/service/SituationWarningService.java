@@ -4,6 +4,8 @@ import com.neko.seed.traffic.entity.SituationWarning;
 import com.baomidou.mybatisplus.extension.service.IService;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * <p>
  * 服务类
@@ -13,5 +15,7 @@ import org.springframework.stereotype.Service;
  * @since 2021-06-10
  */
 public interface SituationWarningService extends IService<SituationWarning> {
+
+    List<SituationWarning> listRecent50();
 
 }

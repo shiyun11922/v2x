@@ -4,13 +4,17 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.neko.seed.traffic.entity.CoreData;
 import com.neko.seed.traffic.entity.CoreDataVO;
+import com.neko.seed.traffic.entity.ServiceTodo;
+import com.neko.seed.traffic.entity.SituationWarning;
 import com.neko.seed.traffic.mapper.CoreDataMapper;
+import com.neko.seed.traffic.mapper.ServiceTodoMapper;
+import com.neko.seed.traffic.mapper.SituationWarningMapper;
 import com.neko.seed.traffic.service.CoreDataService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import java.text.SimpleDateFormat;
 import java.time.format.DateTimeFormatter;
@@ -45,6 +49,11 @@ public class CoreDataServiceImpl extends ServiceImpl<CoreDataMapper, CoreData> i
     @Autowired
     private CoreDataMapper coreDataMapper;
 
+    @Autowired
+    private SituationWarningMapper situationWarningMapper;
+
+    @Autowired
+    private ServiceTodoMapper serviceTodoMapper;
 
     @Override
     public CoreData getDataByName(String name) {
@@ -53,6 +62,7 @@ public class CoreDataServiceImpl extends ServiceImpl<CoreDataMapper, CoreData> i
         wrapper.lambda().eq(CoreData::getRoadSectionName, name)
                 .orderByDesc(CoreData::getRecTime)
                 .last("limit 1");
+
         List<CoreData> coreData = coreDataMapper.selectList(wrapper);
         return coreData.isEmpty() ? null : coreData.get(0);
     }
@@ -147,8 +157,15 @@ public class CoreDataServiceImpl extends ServiceImpl<CoreDataMapper, CoreData> i
                 }
 
         );
+        ServiceTodo leastOne = serviceTodoMapper.getLeastOne(name);
         ArrayList<CoreData> coreDatass = new ArrayList<>();
-        map.values().stream().forEach(v -> coreDatass.add(v));
+        map.values().stream().forEach(v -> {
+
+            if (leastOne != null && !StringUtils.isEmpty(leastOne.getNeedTodo())) {
+                v.setMeausreInfo(leastOne.getNeedTodo());
+            }
+            coreDatass.add(v);
+        });
         return coreDatass;
     }
 
@@ -192,8 +209,18 @@ public class CoreDataServiceImpl extends ServiceImpl<CoreDataMapper, CoreData> i
                 }
 
         );
+
+        ServiceTodo leastOne = serviceTodoMapper.getLeastOne(name);
+
+
         ArrayList<CoreData> coreDatass = new ArrayList<>();
-        map.values().stream().forEach(v -> coreDatass.add(v));
+        map.values().stream().forEach(v -> {
+
+            if (leastOne != null && !StringUtils.isEmpty(leastOne.getNeedTodo())) {
+                v.setMeausreInfo(leastOne.getNeedTodo());
+            }
+            coreDatass.add(v);
+        });
         return coreDatass;
     }
 

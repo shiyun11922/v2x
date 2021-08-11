@@ -13,4 +13,5 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  */
 public interface ServiceTodoMapper extends BaseMapper<ServiceTodo> {
 
+    ServiceTodo getLeastOne(String roadName);
 }

@@ -18,4 +18,7 @@ import java.util.List;
 public interface CoreDataMapper extends BaseMapper<CoreData> {
 
     List<CoreData> selectTopRate();
+
+
+    List<CoreData> getLatestCoreDataByName();
 }

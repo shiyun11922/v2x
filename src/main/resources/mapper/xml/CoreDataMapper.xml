@@ -11,4 +11,14 @@
         order by a.rec_time desc
         limit 23
     </select>
+    <select id="getLatestCoreDataByName"  resultType="com.neko.seed.traffic.entity.CoreData">
+        select * from
+        (select distinct road_section_name, nums_blue_car, nums_yell_car, nums_yell_car+nums_blue_car total_cars, rec_time
+        from traffic_core_data
+        order by rec_time desc) a
+        group by a.road_section_name
+        order by a.rec_time desc
+        limit 23
+    </select>
+
 </mapper>

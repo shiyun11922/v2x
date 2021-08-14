@@ -1,18 +1,22 @@
 package com.neko.seed.v2x.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.google.common.cache.Cache;
+import com.google.common.cache.CacheBuilder;
 import com.neko.seed.v2x.entity.ddo.TrafficCoreDataPro;
 import com.neko.seed.v2x.mapper.TrafficCoreDataProMapper;
 import com.neko.seed.v2x.service.ITrafficCoreDataProService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.Callable;
+import java.util.concurrent.TimeUnit;
 
 /**
  * <p>
@@ -27,14 +31,39 @@ public class TrafficCoreDataProServiceImpl extends ServiceImpl<TrafficCoreDataPr
 
     private static final Logger LOGGER = LoggerFactory.getLogger(TrafficCoreDataProServiceImpl.class);
 
+    @Value("${v2x.service.latest.key.interval}")
+    private Integer keyInterval;
     @Autowired
     private TrafficCoreDataProMapper trafficCoreDataProMapper;
 
-    @Override
-    public List<TrafficCoreDataPro> topRate() {
+    private Cache<String, List<TrafficCoreDataPro>> cache = CacheBuilder.newBuilder()
+            .maximumSize(200)
+            .expireAfterWrite(600, TimeUnit.SECONDS)
+            .build();
 
-        return trafficCoreDataProMapper.getLatestDetails();
+    private List<TrafficCoreDataPro> getCacheValue(String key) throws Exception {
+        return cache.get(key, new Callable<List<TrafficCoreDataPro>>() {
+            public List<TrafficCoreDataPro> call() {
+                List<TrafficCoreDataPro> latestDetails = trafficCoreDataProMapper.getLatestDetails();
+                return latestDetails;
+            }
+        });
     }
+
+    @Override
+    public List<TrafficCoreDataPro> getAllRoadsLatestDeatail() {
+
+        String key = String.valueOf(System.currentTimeMillis() / 1000 / this.keyInterval);
+
+        List<TrafficCoreDataPro> cacheValue = null;
+        try {
+            cacheValue = this.getCacheValue(key);
+        } catch (Exception e) {
+            LOGGER.error("获取缓存失败", e);
+        }
+        return cacheValue;
+    }
+
 
     @Override
     public TrafficCoreDataPro getLatestData(String roadname) {
@@ -46,12 +75,19 @@ public class TrafficCoreDataProServiceImpl extends ServiceImpl<TrafficCoreDataPr
     public List<TrafficCoreDataPro> getRoadDetails(String roadname, Long start, Long end) {
 
         List<Long> ids = this.getRangeHourTime(start, end);
-        if(CollectionUtils.isEmpty(ids)){
+        if (CollectionUtils.isEmpty(ids)) {
             LOGGER.error("异常的时间范围, roadname={}, start={}, end={}", roadname, start, end);
             return null;
         }
 
         return trafficCoreDataProMapper.getSpecifiedDetailByRoad(roadname, ids);
+    }
+
+    @Override
+    public List<TrafficCoreDataPro> getRoadDetailsOfDay(String roadname, String day) {
+
+
+        return null;
     }
 
     public List<Long> getRangeHourTime(long start, Long end) {

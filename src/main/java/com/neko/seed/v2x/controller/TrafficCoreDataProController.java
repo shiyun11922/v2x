@@ -2,12 +2,19 @@ package com.neko.seed.v2x.controller;
 
 
 import com.neko.seed.base.entity.Result;
+import com.neko.seed.traffic.entity.ServiceQuality;
+import com.neko.seed.traffic.entity.ServiceTodo;
+import com.neko.seed.traffic.entity.SituationWarning;
 import com.neko.seed.traffic.entity.TopRateVO;
+import com.neko.seed.utils.DateUtils;
 import com.neko.seed.v2x.entity.ddo.TrafficCoreDataPro;
+import com.neko.seed.v2x.entity.vo.TrafficPredictVO;
 import com.neko.seed.v2x.service.ITrafficCoreDataProService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.CollectionUtils;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,7 +23,9 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
@@ -47,6 +56,7 @@ public class TrafficCoreDataProController {
 
     @PostMapping("/save")
     public Result saveDetail() {
+
 
         return new Result().success();
     }
@@ -94,9 +104,9 @@ public class TrafficCoreDataProController {
      * @return
      */
     @GetMapping("/top")
-    public Result top() {
+    public Result top() throws Exception {
 
-        List<TrafficCoreDataPro> trafficCoreDataPros = trafficCoreDataProServiceImpl.topRate();
+        List<TrafficCoreDataPro> trafficCoreDataPros = trafficCoreDataProServiceImpl.getAllRoadsLatestDeatail();
 
         ArrayList<TopRateVO> topRateVOS = new ArrayList<>();
         trafficCoreDataPros.stream().forEach(c -> {
@@ -115,6 +125,91 @@ public class TrafficCoreDataProController {
 
         return new Result().success(collects);
 
+    }
+
+    @GetMapping("/todo")
+    public Result todo() throws Exception {
+
+        List<TrafficCoreDataPro> trafficCoreDataPros = trafficCoreDataProServiceImpl.getAllRoadsLatestDeatail();
+
+        ArrayList<ServiceTodo> serviceTodos = new ArrayList<>();
+        trafficCoreDataPros.stream().forEach(tcd -> {
+
+            if (!StringUtils.isEmpty(tcd.getMeausreInfo())) {
+                serviceTodos.add(new ServiceTodo(tcd.getRoadSectionName(), tcd.getMeausreInfo(), tcd.getRecTime()));
+            }
+        });
+        return new Result().success(serviceTodos);
+    }
+
+
+    @GetMapping("/quality")
+    public Result quality() throws Exception {
+
+        List<TrafficCoreDataPro> trafficCoreDataPros = trafficCoreDataProServiceImpl.getAllRoadsLatestDeatail();
+
+        ArrayList<ServiceQuality> serviceQualities = new ArrayList<>();
+        trafficCoreDataPros.stream().forEach(tcd -> {
+
+            if (!StringUtils.isEmpty(tcd.getServiceLevel())) {
+                serviceQualities.add(new ServiceQuality(tcd.getRoadSectionName(), tcd.getMeausreInfo(), tcd.getRecTime()));
+            }
+        });
+        return new Result().success(serviceQualities);
+    }
+
+    @GetMapping("/warning")
+    public Result warning() throws Exception {
+
+        List<TrafficCoreDataPro> trafficCoreDataPros = trafficCoreDataProServiceImpl.getAllRoadsLatestDeatail();
+
+        ArrayList<SituationWarning> situationWarnings = new ArrayList<>();
+        trafficCoreDataPros.stream().forEach(tcd -> {
+
+            if (!Objects.isNull(tcd.getSituationPrediction())) {
+                situationWarnings.add(new SituationWarning(tcd.getRoadSectionName(), tcd.getSituationPrediction(), tcd.getRecTime()));
+            }
+        });
+        return new Result().success(situationWarnings);
+    }
+
+
+
+
+
+    @GetMapping("/predict")
+    public Result predict(String roadname) {
+
+        Date current = new Date();
+        long currentTime = current.getTime() / 1000;
+        Calendar now = Calendar.getInstance();
+        now.setTime(current);
+        now.add(Calendar.DAY_OF_YEAR, -1);//
+        long startTimeStamp = (now.getTime().getTime()) / 1000;
+        long endTimeStamp = currentTime;
+
+        List<TrafficCoreDataPro> roadDetails = trafficCoreDataProServiceImpl.getRoadDetails(roadname, startTimeStamp, endTimeStamp);
+
+        Map<String, List<TrafficPredictVO>> resultVO = new HashMap<>();
+
+
+        List<TrafficPredictVO> tpReal = new ArrayList<>();
+        List<TrafficPredictVO> tpPredict = new ArrayList<>();
+
+        resultVO.put("real", tpReal);
+        resultVO.put("predict", tpPredict);
+
+        if (CollectionUtils.isEmpty(roadDetails)) {
+            return new Result().success(resultVO);
+        }
+
+        roadDetails.stream().forEach(rd -> {
+            int currentHour = rd.getRecTime().getHour();
+            tpReal.add(new TrafficPredictVO(rd.getTotalCars(), currentHour));
+            tpPredict.add(new TrafficPredictVO(rd.getPredictTotalCars(), currentHour));
+        });
+
+        return new Result().success(resultVO);
     }
 
 

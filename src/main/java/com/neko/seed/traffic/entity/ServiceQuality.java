@@ -38,5 +38,12 @@ public class ServiceQuality implements Serializable {
      */
     private LocalDateTime recTime;
 
+    public ServiceQuality() {
+    }
 
+    public ServiceQuality(String recRoadSectionName, String serviceLevel, LocalDateTime recTime) {
+        this.recRoadSectionName = recRoadSectionName;
+        this.serviceLevel = serviceLevel;
+        this.recTime = recTime;
+    }
 }

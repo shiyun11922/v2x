@@ -1,8 +1,7 @@
 package com.neko.seed.traffic.controller;
 
-import com.neko.seed.ExcelUtils;
+import com.neko.seed.utils.ExcelUtils;
 import com.neko.seed.auth.annotation.AuthRequest;
-import com.neko.seed.base.entity.Result;
 import com.neko.seed.traffic.entity.CoreData;
 import com.neko.seed.traffic.entity.CoreDataVO;
 import com.neko.seed.traffic.entity.PersonExportVo;
@@ -12,7 +11,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 

@@ -29,3 +29,11 @@ mybatis-plus:
 
 logging:
   config=classpath: log4j2.xml
+v2x:
+  service:
+    latest:
+      key:
+        interval: 120
+    old:
+      key:
+        interval: 3600

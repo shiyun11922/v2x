@@ -1,8 +1,7 @@
 package com.neko.seed.auth.service.impl;
 
-import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.neko.seed.HttpClientUtil;
+import com.neko.seed.utils.HttpClientUtil;
 import com.neko.seed.auth.entity.AuthResult;
 import com.neko.seed.auth.exception.TokenException;
 import com.neko.seed.auth.service.AuthService;

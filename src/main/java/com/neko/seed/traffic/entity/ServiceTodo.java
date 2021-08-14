@@ -38,5 +38,12 @@ public class ServiceTodo implements Serializable {
      */
     private LocalDateTime recTime;
 
+    public ServiceTodo() {
+    }
 
+    public ServiceTodo(String recRoadSectionName, String needTodo, LocalDateTime recTime) {
+        this.recRoadSectionName = recRoadSectionName;
+        this.needTodo = needTodo;
+        this.recTime = recTime;
+    }
 }

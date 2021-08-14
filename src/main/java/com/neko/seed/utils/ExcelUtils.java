@@ -1,4 +1,4 @@
-package com.neko.seed;
+package com.neko.seed.utils;
 
 import cn.afterturn.easypoi.excel.ExcelExportUtil;
 import cn.afterturn.easypoi.excel.ExcelImportUtil;

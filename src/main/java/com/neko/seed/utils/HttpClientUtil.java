@@ -1,4 +1,4 @@
-package com.neko.seed;
+package com.neko.seed.utils;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.http.NameValuePair;

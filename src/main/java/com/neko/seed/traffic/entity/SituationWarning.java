@@ -39,4 +39,12 @@ public class SituationWarning implements Serializable {
     private LocalDateTime recTime;
 
 
+    public SituationWarning() {
+    }
+
+    public SituationWarning(String recRoadSectionName, Double numsRate, LocalDateTime recTime) {
+        this.recRoadSectionName = recRoadSectionName;
+        this.numsRate = numsRate;
+        this.recTime = recTime;
+    }
 }

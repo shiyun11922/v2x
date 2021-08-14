@@ -16,10 +16,12 @@ import java.util.List;
  */
 public interface ITrafficCoreDataProService extends IService<TrafficCoreDataPro> {
 
-    List<TrafficCoreDataPro> topRate();
+    List<TrafficCoreDataPro> getAllRoadsLatestDeatail();
 
     TrafficCoreDataPro getLatestData(String roadname);
 
     List<TrafficCoreDataPro> getRoadDetails(String roadname, Long start, Long end);
+
+    List<TrafficCoreDataPro> getRoadDetailsOfDay(String roadname, String day);
 
 }

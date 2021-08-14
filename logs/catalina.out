@@ -1,124 +1,66 @@
-2021-08-11 22:11:12:131|INFO |restartedMain||com.neko.seed.Application-50| - Starting Application on localhost with PID 16600 (/Users/zhangxiang/tmp/v2x-back/v2x/target/classes started by zhangxiang in /Users/zhangxiang/tmp/v2x-back/v2x)
-2021-08-11 22:11:12:138|INFO |restartedMain||com.neko.seed.Application-679| - The following profiles are active: dev
-2021-08-11 22:11:12:248|INFO |restartedMain||org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor-227| - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2021-08-11 22:11:12:249|INFO |restartedMain||org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor-227| - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2021-08-11 22:11:18:117|INFO |restartedMain||org.springframework.boot.web.embedded.tomcat.TomcatWebServer-90| - Tomcat initialized with port(s): 8081 (http)
-2021-08-11 22:11:18:138|INFO |restartedMain||org.apache.coyote.http11.Http11NioProtocol-173| - Initializing ProtocolHandler ["http-nio-8081"]
-2021-08-11 22:11:18:157|INFO |restartedMain||org.apache.catalina.core.StandardService-173| - Starting service [Tomcat]
-2021-08-11 22:11:18:159|INFO |restartedMain||org.apache.catalina.core.StandardEngine-173| - Starting Servlet Engine: Apache Tomcat/9.0.13
-2021-08-11 22:11:18:175|INFO |restartedMain||org.apache.catalina.core.AprLifecycleListener-173| - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/Users/zhangxiang/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.]
-2021-08-11 22:11:18:335|INFO |restartedMain||org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/v1]-173| - Initializing Spring embedded WebApplicationContext
-2021-08-11 22:11:18:336|INFO |restartedMain||org.springframework.web.context.ContextLoader-296| - Root WebApplicationContext: initialization completed in 6087 ms
-2021-08-11 22:11:19:456|INFO |restartedMain||com.zaxxer.hikari.HikariDataSource-110| - HikariPool-1 - Starting...
-2021-08-11 22:11:19:713|INFO |restartedMain||com.zaxxer.hikari.HikariDataSource-123| - HikariPool-1 - Start completed.
-2021-08-11 22:11:19:916|WARN |restartedMain||com.baomidou.mybatisplus.core.toolkit.TableInfoHelper-250| - Warn: Could not find @TableId in Class: com.neko.seed.traffic.entity.CoreData.
-2021-08-11 22:11:20:016|WARN |restartedMain||com.baomidou.mybatisplus.core.toolkit.TableInfoHelper-250| - Warn: Could not find @TableId in Class: com.neko.seed.traffic.entity.OnroadCarDetail.
-2021-08-11 22:11:20:069|WARN |restartedMain||com.baomidou.mybatisplus.core.toolkit.TableInfoHelper-250| - Warn: Could not find @TableId in Class: com.neko.seed.traffic.entity.Predict.
-2021-08-11 22:11:20:118|WARN |restartedMain||com.baomidou.mybatisplus.core.toolkit.TableInfoHelper-250| - Warn: Could not find @TableId in Class: com.neko.seed.traffic.entity.RoadName.
-2021-08-11 22:11:20:163|WARN |restartedMain||com.baomidou.mybatisplus.core.toolkit.TableInfoHelper-250| - Warn: Could not find @TableId in Class: com.neko.seed.traffic.entity.ServiceQuality.
-2021-08-11 22:11:20:205|WARN |restartedMain||com.baomidou.mybatisplus.core.toolkit.TableInfoHelper-250| - Warn: Could not find @TableId in Class: com.neko.seed.traffic.entity.ServiceTodo.
-2021-08-11 22:11:20:249|WARN |restartedMain||com.baomidou.mybatisplus.core.toolkit.TableInfoHelper-250| - Warn: Could not find @TableId in Class: com.neko.seed.traffic.entity.SituationWarning.
-2021-08-11 22:11:21:111|INFO |restartedMain||org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor-171| - Initializing ExecutorService 'applicationTaskExecutor'
-2021-08-11 22:11:21:475|INFO |restartedMain||org.springframework.batch.core.repository.support.JobRepositoryFactoryBean-184| - No database type set, using meta data indicating: MYSQL
-2021-08-11 22:11:21:510|INFO |restartedMain||org.springframework.batch.core.launch.support.SimpleJobLauncher-204| - No TaskExecutor has been set, defaulting to synchronous executor.
-2021-08-11 22:11:21:798|INFO |restartedMain||org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer-57| - LiveReload server is running on port 35729
-2021-08-11 22:11:21:849|INFO |restartedMain||org.apache.coyote.http11.Http11NioProtocol-173| - Starting ProtocolHandler ["http-nio-8081"]
-2021-08-11 22:11:21:879|INFO |restartedMain||org.apache.tomcat.util.net.NioSelectorPool-173| - Using a shared selector for servlet write/read
-2021-08-11 22:11:21:901|INFO |restartedMain||org.springframework.boot.web.embedded.tomcat.TomcatWebServer-204| - Tomcat started on port(s): 8081 (http) with context path '/v1'
-2021-08-11 22:11:21:906|INFO |restartedMain||com.neko.seed.Application-59| - Started Application in 10.762 seconds (JVM running for 12.478)
-2021-08-11 22:12:35:210|INFO |Thread-9||org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor-208| - Shutting down ExecutorService 'applicationTaskExecutor'
-2021-08-11 22:12:35:212|INFO |Thread-9||com.zaxxer.hikari.HikariDataSource-350| - HikariPool-1 - Shutdown initiated...
-2021-08-11 22:12:35:220|INFO |Thread-9||com.zaxxer.hikari.HikariDataSource-352| - HikariPool-1 - Shutdown completed.
-2021-08-11 22:12:39:938|INFO |restartedMain|com.neko.seed.Application-50| - Starting Application on localhost with PID 16635 (/Users/zhangxiang/tmp/v2x-back/v2x/target/classes started by zhangxiang in /Users/zhangxiang/tmp/v2x-back/v2x)
-2021-08-11 22:12:39:944|INFO |restartedMain|com.neko.seed.Application-679| - The following profiles are active: dev
-2021-08-11 22:12:40:031|INFO |restartedMain|org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor-227| - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2021-08-11 22:12:40:032|INFO |restartedMain|org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor-227| - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2021-08-11 22:12:44:108|INFO |restartedMain|org.springframework.boot.web.embedded.tomcat.TomcatWebServer-90| - Tomcat initialized with port(s): 8081 (http)
-2021-08-11 22:12:44:125|INFO |restartedMain|org.apache.coyote.http11.Http11NioProtocol-173| - Initializing ProtocolHandler ["http-nio-8081"]
-2021-08-11 22:12:44:140|INFO |restartedMain|org.apache.catalina.core.StandardService-173| - Starting service [Tomcat]
-2021-08-11 22:12:44:141|INFO |restartedMain|org.apache.catalina.core.StandardEngine-173| - Starting Servlet Engine: Apache Tomcat/9.0.13
-2021-08-11 22:12:44:162|INFO |restartedMain|org.apache.catalina.core.AprLifecycleListener-173| - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/Users/zhangxiang/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.]
-2021-08-11 22:12:44:288|INFO |restartedMain|org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/v1]-173| - Initializing Spring embedded WebApplicationContext
-2021-08-11 22:12:44:288|INFO |restartedMain|org.springframework.web.context.ContextLoader-296| - Root WebApplicationContext: initialization completed in 4256 ms
-2021-08-11 22:12:44:886|INFO |restartedMain|com.zaxxer.hikari.HikariDataSource-110| - HikariPool-1 - Starting...
-2021-08-11 22:12:45:076|INFO |restartedMain|com.zaxxer.hikari.HikariDataSource-123| - HikariPool-1 - Start completed.
-2021-08-11 22:12:45:216|WARN |restartedMain|com.baomidou.mybatisplus.core.toolkit.TableInfoHelper-250| - Warn: Could not find @TableId in Class: com.neko.seed.traffic.entity.CoreData.
-2021-08-11 22:12:45:305|WARN |restartedMain|com.baomidou.mybatisplus.core.toolkit.TableInfoHelper-250| - Warn: Could not find @TableId in Class: com.neko.seed.traffic.entity.OnroadCarDetail.
-2021-08-11 22:12:45:359|WARN |restartedMain|com.baomidou.mybatisplus.core.toolkit.TableInfoHelper-250| - Warn: Could not find @TableId in Class: com.neko.seed.traffic.entity.Predict.
-2021-08-11 22:12:45:417|WARN |restartedMain|com.baomidou.mybatisplus.core.toolkit.TableInfoHelper-250| - Warn: Could not find @TableId in Class: com.neko.seed.traffic.entity.RoadName.
-2021-08-11 22:12:45:462|WARN |restartedMain|com.baomidou.mybatisplus.core.toolkit.TableInfoHelper-250| - Warn: Could not find @TableId in Class: com.neko.seed.traffic.entity.ServiceQuality.
-2021-08-11 22:12:45:520|WARN |restartedMain|com.baomidou.mybatisplus.core.toolkit.TableInfoHelper-250| - Warn: Could not find @TableId in Class: com.neko.seed.traffic.entity.ServiceTodo.
-2021-08-11 22:12:45:564|WARN |restartedMain|com.baomidou.mybatisplus.core.toolkit.TableInfoHelper-250| - Warn: Could not find @TableId in Class: com.neko.seed.traffic.entity.SituationWarning.
-2021-08-11 22:12:46:251|INFO |restartedMain|org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor-171| - Initializing ExecutorService 'applicationTaskExecutor'
-2021-08-11 22:12:46:557|INFO |restartedMain|org.springframework.batch.core.repository.support.JobRepositoryFactoryBean-184| - No database type set, using meta data indicating: MYSQL
-2021-08-11 22:12:46:581|INFO |restartedMain|org.springframework.batch.core.launch.support.SimpleJobLauncher-204| - No TaskExecutor has been set, defaulting to synchronous executor.
-2021-08-11 22:12:46:823|INFO |restartedMain|org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer-57| - LiveReload server is running on port 35729
-2021-08-11 22:12:46:868|INFO |restartedMain|org.apache.coyote.http11.Http11NioProtocol-173| - Starting ProtocolHandler ["http-nio-8081"]
-2021-08-11 22:12:46:895|INFO |restartedMain|org.apache.tomcat.util.net.NioSelectorPool-173| - Using a shared selector for servlet write/read
-2021-08-11 22:12:46:916|INFO |restartedMain|org.springframework.boot.web.embedded.tomcat.TomcatWebServer-204| - Tomcat started on port(s): 8081 (http) with context path '/v1'
-2021-08-11 22:12:46:923|INFO |restartedMain|com.neko.seed.Application-59| - Started Application in 7.787 seconds (JVM running for 9.151)
-2021-08-11 22:14:14:074|INFO |Thread-9|org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor-208| - Shutting down ExecutorService 'applicationTaskExecutor'
-2021-08-11 22:14:14:076|INFO |Thread-9|com.zaxxer.hikari.HikariDataSource-350| - HikariPool-1 - Shutdown initiated...
-2021-08-11 22:14:14:084|INFO |Thread-9|com.zaxxer.hikari.HikariDataSource-352| - HikariPool-1 - Shutdown completed.
-2021-08-11 22:14:28:277|INFO |restartedMain|com.neko.seed.Application| - Starting Application on localhost with PID 16683 (/Users/zhangxiang/tmp/v2x-back/v2x/target/classes started by zhangxiang in /Users/zhangxiang/tmp/v2x-back/v2x)
-2021-08-11 22:14:28:284|INFO |restartedMain|com.neko.seed.Application| - The following profiles are active: dev
-2021-08-11 22:14:28:382|INFO |restartedMain|org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor| - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2021-08-11 22:14:28:382|INFO |restartedMain|org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor| - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2021-08-11 22:14:32:558|INFO |restartedMain|org.springframework.boot.web.embedded.tomcat.TomcatWebServer| - Tomcat initialized with port(s): 8081 (http)
-2021-08-11 22:14:32:577|INFO |restartedMain|org.apache.coyote.http11.Http11NioProtocol| - Initializing ProtocolHandler ["http-nio-8081"]
-2021-08-11 22:14:32:592|INFO |restartedMain|org.apache.catalina.core.StandardService| - Starting service [Tomcat]
-2021-08-11 22:14:32:593|INFO |restartedMain|org.apache.catalina.core.StandardEngine| - Starting Servlet Engine: Apache Tomcat/9.0.13
-2021-08-11 22:14:32:612|INFO |restartedMain|org.apache.catalina.core.AprLifecycleListener| - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/Users/zhangxiang/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.]
-2021-08-11 22:14:32:740|INFO |restartedMain|org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/v1]| - Initializing Spring embedded WebApplicationContext
-2021-08-11 22:14:32:740|INFO |restartedMain|org.springframework.web.context.ContextLoader| - Root WebApplicationContext: initialization completed in 4357 ms
-2021-08-11 22:14:33:337|INFO |restartedMain|com.zaxxer.hikari.HikariDataSource| - HikariPool-1 - Starting...
-2021-08-11 22:14:33:531|INFO |restartedMain|com.zaxxer.hikari.HikariDataSource| - HikariPool-1 - Start completed.
-2021-08-11 22:14:33:669|WARN |restartedMain|com.baomidou.mybatisplus.core.toolkit.TableInfoHelper| - Warn: Could not find @TableId in Class: com.neko.seed.traffic.entity.CoreData.
-2021-08-11 22:14:33:761|WARN |restartedMain|com.baomidou.mybatisplus.core.toolkit.TableInfoHelper| - Warn: Could not find @TableId in Class: com.neko.seed.traffic.entity.OnroadCarDetail.
-2021-08-11 22:14:33:815|WARN |restartedMain|com.baomidou.mybatisplus.core.toolkit.TableInfoHelper| - Warn: Could not find @TableId in Class: com.neko.seed.traffic.entity.Predict.
-2021-08-11 22:14:33:867|WARN |restartedMain|com.baomidou.mybatisplus.core.toolkit.TableInfoHelper| - Warn: Could not find @TableId in Class: com.neko.seed.traffic.entity.RoadName.
-2021-08-11 22:14:33:917|WARN |restartedMain|com.baomidou.mybatisplus.core.toolkit.TableInfoHelper| - Warn: Could not find @TableId in Class: com.neko.seed.traffic.entity.ServiceQuality.
-2021-08-11 22:14:33:974|WARN |restartedMain|com.baomidou.mybatisplus.core.toolkit.TableInfoHelper| - Warn: Could not find @TableId in Class: com.neko.seed.traffic.entity.ServiceTodo.
-2021-08-11 22:14:34:058|WARN |restartedMain|com.baomidou.mybatisplus.core.toolkit.TableInfoHelper| - Warn: Could not find @TableId in Class: com.neko.seed.traffic.entity.SituationWarning.
-2021-08-11 22:14:34:723|INFO |restartedMain|org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor| - Initializing ExecutorService 'applicationTaskExecutor'
-2021-08-11 22:14:35:047|INFO |restartedMain|org.springframework.batch.core.repository.support.JobRepositoryFactoryBean| - No database type set, using meta data indicating: MYSQL
-2021-08-11 22:14:35:073|INFO |restartedMain|org.springframework.batch.core.launch.support.SimpleJobLauncher| - No TaskExecutor has been set, defaulting to synchronous executor.
-2021-08-11 22:14:35:320|INFO |restartedMain|org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer| - LiveReload server is running on port 35729
-2021-08-11 22:14:35:379|INFO |restartedMain|org.apache.coyote.http11.Http11NioProtocol| - Starting ProtocolHandler ["http-nio-8081"]
-2021-08-11 22:14:35:404|INFO |restartedMain|org.apache.tomcat.util.net.NioSelectorPool| - Using a shared selector for servlet write/read
-2021-08-11 22:14:35:425|INFO |restartedMain|org.springframework.boot.web.embedded.tomcat.TomcatWebServer| - Tomcat started on port(s): 8081 (http) with context path '/v1'
-2021-08-11 22:14:35:431|INFO |restartedMain|com.neko.seed.Application| - Started Application in 7.936 seconds (JVM running for 9.27)
-2021-08-11 22:15:26:280|INFO |Thread-9|org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor| - Shutting down ExecutorService 'applicationTaskExecutor'
-2021-08-11 22:15:26:281|INFO |Thread-9|com.zaxxer.hikari.HikariDataSource| - HikariPool-1 - Shutdown initiated...
-2021-08-11 22:15:26:290|INFO |Thread-9|com.zaxxer.hikari.HikariDataSource| - HikariPool-1 - Shutdown completed.
-[2021-08-11 22:15:30:594][INFO ][restartedMain][com.neko.seed.Application] Starting Application on localhost with PID 16707 (/Users/zhangxiang/tmp/v2x-back/v2x/target/classes started by zhangxiang in /Users/zhangxiang/tmp/v2x-back/v2x)
-[2021-08-11 22:15:30:600][INFO ][restartedMain][com.neko.seed.Application] The following profiles are active: dev
-[2021-08-11 22:15:30:655][INFO ][restartedMain][org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-[2021-08-11 22:15:30:655][INFO ][restartedMain][org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-[2021-08-11 22:15:35:024][INFO ][restartedMain][org.springframework.boot.web.embedded.tomcat.TomcatWebServer] Tomcat initialized with port(s): 8081 (http)
-[2021-08-11 22:15:35:043][INFO ][restartedMain][org.apache.coyote.http11.Http11NioProtocol] Initializing ProtocolHandler ["http-nio-8081"]
-[2021-08-11 22:15:35:063][INFO ][restartedMain][org.apache.catalina.core.StandardService] Starting service [Tomcat]
-[2021-08-11 22:15:35:064][INFO ][restartedMain][org.apache.catalina.core.StandardEngine] Starting Servlet Engine: Apache Tomcat/9.0.13
-[2021-08-11 22:15:35:085][INFO ][restartedMain][org.apache.catalina.core.AprLifecycleListener] The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/Users/zhangxiang/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.]
-[2021-08-11 22:15:35:223][INFO ][restartedMain][org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/v1]] Initializing Spring embedded WebApplicationContext
-[2021-08-11 22:15:35:223][INFO ][restartedMain][org.springframework.web.context.ContextLoader] Root WebApplicationContext: initialization completed in 4568 ms
-[2021-08-11 22:15:35:828][INFO ][restartedMain][com.zaxxer.hikari.HikariDataSource] HikariPool-1 - Starting...
-[2021-08-11 22:15:36:023][INFO ][restartedMain][com.zaxxer.hikari.HikariDataSource] HikariPool-1 - Start completed.
-[2021-08-11 22:15:36:184][WARN ][restartedMain][com.baomidou.mybatisplus.core.toolkit.TableInfoHelper] Warn: Could not find @TableId in Class: com.neko.seed.traffic.entity.CoreData.
-[2021-08-11 22:15:36:276][WARN ][restartedMain][com.baomidou.mybatisplus.core.toolkit.TableInfoHelper] Warn: Could not find @TableId in Class: com.neko.seed.traffic.entity.OnroadCarDetail.
-[2021-08-11 22:15:36:331][WARN ][restartedMain][com.baomidou.mybatisplus.core.toolkit.TableInfoHelper] Warn: Could not find @TableId in Class: com.neko.seed.traffic.entity.Predict.
-[2021-08-11 22:15:36:372][WARN ][restartedMain][com.baomidou.mybatisplus.core.toolkit.TableInfoHelper] Warn: Could not find @TableId in Class: com.neko.seed.traffic.entity.RoadName.
-[2021-08-11 22:15:36:413][WARN ][restartedMain][com.baomidou.mybatisplus.core.toolkit.TableInfoHelper] Warn: Could not find @TableId in Class: com.neko.seed.traffic.entity.ServiceQuality.
-[2021-08-11 22:15:36:466][WARN ][restartedMain][com.baomidou.mybatisplus.core.toolkit.TableInfoHelper] Warn: Could not find @TableId in Class: com.neko.seed.traffic.entity.ServiceTodo.
-[2021-08-11 22:15:36:526][WARN ][restartedMain][com.baomidou.mybatisplus.core.toolkit.TableInfoHelper] Warn: Could not find @TableId in Class: com.neko.seed.traffic.entity.SituationWarning.
-[2021-08-11 22:15:37:220][INFO ][restartedMain][org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor] Initializing ExecutorService 'applicationTaskExecutor'
-[2021-08-11 22:15:37:524][INFO ][restartedMain][org.springframework.batch.core.repository.support.JobRepositoryFactoryBean] No database type set, using meta data indicating: MYSQL
-[2021-08-11 22:15:37:552][INFO ][restartedMain][org.springframework.batch.core.launch.support.SimpleJobLauncher] No TaskExecutor has been set, defaulting to synchronous executor.
-[2021-08-11 22:15:37:788][INFO ][restartedMain][org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer] LiveReload server is running on port 35729
-[2021-08-11 22:15:37:841][INFO ][restartedMain][org.apache.coyote.http11.Http11NioProtocol] Starting ProtocolHandler ["http-nio-8081"]
-[2021-08-11 22:15:37:871][INFO ][restartedMain][org.apache.tomcat.util.net.NioSelectorPool] Using a shared selector for servlet write/read
-[2021-08-11 22:15:37:897][INFO ][restartedMain][org.springframework.boot.web.embedded.tomcat.TomcatWebServer] Tomcat started on port(s): 8081 (http) with context path '/v1'
-[2021-08-11 22:15:37:902][INFO ][restartedMain][com.neko.seed.Application] Started Application in 8.011 seconds (JVM running for 9.337)
-[2021-08-11 22:25:34:559][INFO ][Thread-9][org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor] Shutting down ExecutorService 'applicationTaskExecutor'
-[2021-08-11 22:25:34:560][INFO ][Thread-9][com.zaxxer.hikari.HikariDataSource] HikariPool-1 - Shutdown initiated...
-[2021-08-11 22:25:34:568][INFO ][Thread-9][com.zaxxer.hikari.HikariDataSource] HikariPool-1 - Shutdown completed.
+[2021-08-14 09:54:56:477][INFO ][restartedMain][com.neko.seed.Application] Starting Application on bogon with PID 36760 (/Users/zhangxiang/tmp/v2x-back/v2x/target/classes started by zhangxiang in /Users/zhangxiang/tmp/v2x-back/v2x)
+[2021-08-14 09:54:56:483][INFO ][restartedMain][com.neko.seed.Application] The following profiles are active: dev
+[2021-08-14 09:54:56:563][INFO ][restartedMain][org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+[2021-08-14 09:54:56:564][INFO ][restartedMain][org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+[2021-08-14 09:55:01:968][INFO ][restartedMain][org.springframework.boot.web.embedded.tomcat.TomcatWebServer] Tomcat initialized with port(s): 8081 (http)
+[2021-08-14 09:55:01:991][INFO ][restartedMain][org.apache.coyote.http11.Http11NioProtocol] Initializing ProtocolHandler ["http-nio-8081"]
+[2021-08-14 09:55:02:010][INFO ][restartedMain][org.apache.catalina.core.StandardService] Starting service [Tomcat]
+[2021-08-14 09:55:02:011][INFO ][restartedMain][org.apache.catalina.core.StandardEngine] Starting Servlet Engine: Apache Tomcat/9.0.13
+[2021-08-14 09:55:02:028][INFO ][restartedMain][org.apache.catalina.core.AprLifecycleListener] The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/Users/zhangxiang/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.]
+[2021-08-14 09:55:02:192][INFO ][restartedMain][org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/v1]] Initializing Spring embedded WebApplicationContext
+[2021-08-14 09:55:02:192][INFO ][restartedMain][org.springframework.web.context.ContextLoader] Root WebApplicationContext: initialization completed in 5628 ms
+[2021-08-14 09:55:03:054][INFO ][restartedMain][com.zaxxer.hikari.HikariDataSource] HikariPool-1 - Starting...
+[2021-08-14 09:55:03:289][INFO ][restartedMain][com.zaxxer.hikari.HikariDataSource] HikariPool-1 - Start completed.
+[2021-08-14 09:55:03:514][WARN ][restartedMain][com.baomidou.mybatisplus.core.toolkit.TableInfoHelper] Warn: Could not find @TableId in Class: com.neko.seed.traffic.entity.CoreData.
+[2021-08-14 09:55:03:627][WARN ][restartedMain][com.baomidou.mybatisplus.core.toolkit.TableInfoHelper] Warn: Could not find @TableId in Class: com.neko.seed.traffic.entity.OnroadCarDetail.
+[2021-08-14 09:55:03:678][WARN ][restartedMain][com.baomidou.mybatisplus.core.toolkit.TableInfoHelper] Warn: Could not find @TableId in Class: com.neko.seed.traffic.entity.Predict.
+[2021-08-14 09:55:03:738][WARN ][restartedMain][com.baomidou.mybatisplus.core.toolkit.TableInfoHelper] Warn: Could not find @TableId in Class: com.neko.seed.traffic.entity.RoadName.
+[2021-08-14 09:55:03:814][WARN ][restartedMain][com.baomidou.mybatisplus.core.toolkit.TableInfoHelper] Warn: Could not find @TableId in Class: com.neko.seed.traffic.entity.ServiceQuality.
+[2021-08-14 09:55:03:877][WARN ][restartedMain][com.baomidou.mybatisplus.core.toolkit.TableInfoHelper] Warn: Could not find @TableId in Class: com.neko.seed.traffic.entity.ServiceTodo.
+[2021-08-14 09:55:03:924][WARN ][restartedMain][com.baomidou.mybatisplus.core.toolkit.TableInfoHelper] Warn: Could not find @TableId in Class: com.neko.seed.traffic.entity.SituationWarning.
+[2021-08-14 09:55:05:153][INFO ][restartedMain][org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor] Initializing ExecutorService 'applicationTaskExecutor'
+[2021-08-14 09:55:05:641][INFO ][restartedMain][org.springframework.batch.core.repository.support.JobRepositoryFactoryBean] No database type set, using meta data indicating: MYSQL
+[2021-08-14 09:55:05:675][INFO ][restartedMain][org.springframework.batch.core.launch.support.SimpleJobLauncher] No TaskExecutor has been set, defaulting to synchronous executor.
+[2021-08-14 09:55:06:020][INFO ][restartedMain][org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer] LiveReload server is running on port 35729
+[2021-08-14 09:55:06:082][INFO ][restartedMain][org.apache.coyote.http11.Http11NioProtocol] Starting ProtocolHandler ["http-nio-8081"]
+[2021-08-14 09:55:06:111][INFO ][restartedMain][org.apache.tomcat.util.net.NioSelectorPool] Using a shared selector for servlet write/read
+[2021-08-14 09:55:06:134][INFO ][restartedMain][org.springframework.boot.web.embedded.tomcat.TomcatWebServer] Tomcat started on port(s): 8081 (http) with context path '/v1'
+[2021-08-14 09:55:06:140][INFO ][restartedMain][com.neko.seed.Application] Started Application in 10.809 seconds (JVM running for 14.802)
+[2021-08-14 10:17:51:857][INFO ][Thread-9][org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor] Shutting down ExecutorService 'applicationTaskExecutor'
+[2021-08-14 10:17:51:860][INFO ][Thread-9][com.zaxxer.hikari.HikariDataSource] HikariPool-1 - Shutdown initiated...
+[2021-08-14 10:17:51:878][INFO ][Thread-9][com.zaxxer.hikari.HikariDataSource] HikariPool-1 - Shutdown completed.
+[2021-08-14 10:18:09:623][INFO ][restartedMain][com.neko.seed.Application] Starting Application on bogon with PID 37441 (/Users/zhangxiang/tmp/v2x-back/v2x/target/classes started by zhangxiang in /Users/zhangxiang/tmp/v2x-back/v2x)
+[2021-08-14 10:18:09:632][INFO ][restartedMain][com.neko.seed.Application] The following profiles are active: dev
+[2021-08-14 10:18:09:728][INFO ][restartedMain][org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+[2021-08-14 10:18:09:728][INFO ][restartedMain][org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+[2021-08-14 10:18:14:908][INFO ][restartedMain][org.springframework.boot.web.embedded.tomcat.TomcatWebServer] Tomcat initialized with port(s): 8081 (http)
+[2021-08-14 10:18:14:927][INFO ][restartedMain][org.apache.coyote.http11.Http11NioProtocol] Initializing ProtocolHandler ["http-nio-8081"]
+[2021-08-14 10:18:14:946][INFO ][restartedMain][org.apache.catalina.core.StandardService] Starting service [Tomcat]
+[2021-08-14 10:18:14:947][INFO ][restartedMain][org.apache.catalina.core.StandardEngine] Starting Servlet Engine: Apache Tomcat/9.0.13
+[2021-08-14 10:18:14:963][INFO ][restartedMain][org.apache.catalina.core.AprLifecycleListener] The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/Users/zhangxiang/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.]
+[2021-08-14 10:18:15:091][INFO ][restartedMain][org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/v1]] Initializing Spring embedded WebApplicationContext
+[2021-08-14 10:18:15:091][INFO ][restartedMain][org.springframework.web.context.ContextLoader] Root WebApplicationContext: initialization completed in 5362 ms
+[2021-08-14 10:18:15:778][INFO ][restartedMain][com.zaxxer.hikari.HikariDataSource] HikariPool-1 - Starting...
+[2021-08-14 10:18:16:019][INFO ][restartedMain][com.zaxxer.hikari.HikariDataSource] HikariPool-1 - Start completed.
+[2021-08-14 10:18:16:228][WARN ][restartedMain][com.baomidou.mybatisplus.core.toolkit.TableInfoHelper] Warn: Could not find @TableId in Class: com.neko.seed.traffic.entity.CoreData.
+[2021-08-14 10:18:16:348][WARN ][restartedMain][com.baomidou.mybatisplus.core.toolkit.TableInfoHelper] Warn: Could not find @TableId in Class: com.neko.seed.traffic.entity.OnroadCarDetail.
+[2021-08-14 10:18:16:403][WARN ][restartedMain][com.baomidou.mybatisplus.core.toolkit.TableInfoHelper] Warn: Could not find @TableId in Class: com.neko.seed.traffic.entity.Predict.
+[2021-08-14 10:18:16:461][WARN ][restartedMain][com.baomidou.mybatisplus.core.toolkit.TableInfoHelper] Warn: Could not find @TableId in Class: com.neko.seed.traffic.entity.RoadName.
+[2021-08-14 10:18:16:523][WARN ][restartedMain][com.baomidou.mybatisplus.core.toolkit.TableInfoHelper] Warn: Could not find @TableId in Class: com.neko.seed.traffic.entity.ServiceQuality.
+[2021-08-14 10:18:16:574][WARN ][restartedMain][com.baomidou.mybatisplus.core.toolkit.TableInfoHelper] Warn: Could not find @TableId in Class: com.neko.seed.traffic.entity.ServiceTodo.
+[2021-08-14 10:18:16:624][WARN ][restartedMain][com.baomidou.mybatisplus.core.toolkit.TableInfoHelper] Warn: Could not find @TableId in Class: com.neko.seed.traffic.entity.SituationWarning.
+[2021-08-14 10:18:17:879][INFO ][restartedMain][org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor] Initializing ExecutorService 'applicationTaskExecutor'
+[2021-08-14 10:18:18:300][INFO ][restartedMain][org.springframework.batch.core.repository.support.JobRepositoryFactoryBean] No database type set, using meta data indicating: MYSQL
+[2021-08-14 10:18:18:338][INFO ][restartedMain][org.springframework.batch.core.launch.support.SimpleJobLauncher] No TaskExecutor has been set, defaulting to synchronous executor.
+[2021-08-14 10:18:18:645][INFO ][restartedMain][org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer] LiveReload server is running on port 35729
+[2021-08-14 10:18:18:703][INFO ][restartedMain][org.apache.coyote.http11.Http11NioProtocol] Starting ProtocolHandler ["http-nio-8081"]
+[2021-08-14 10:18:18:737][INFO ][restartedMain][org.apache.tomcat.util.net.NioSelectorPool] Using a shared selector for servlet write/read
+[2021-08-14 10:18:18:765][INFO ][restartedMain][org.springframework.boot.web.embedded.tomcat.TomcatWebServer] Tomcat started on port(s): 8081 (http) with context path '/v1'
+[2021-08-14 10:18:18:770][INFO ][restartedMain][com.neko.seed.Application] Started Application in 10.117 seconds (JVM running for 12.235)
+[2021-08-14 10:18:46:769][INFO ][http-nio-8081-exec-1][org.apache.tomcat.util.http.parser.Cookie] A cookie header was received [1626697914,1626702443,1627608020] that contained an invalid cookie. That cookie will be ignored.Note: further occurrences of this error will be logged at DEBUG level.
+[2021-08-14 10:18:46:786][INFO ][http-nio-8081-exec-1][org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/v1]] Initializing Spring DispatcherServlet 'dispatcherServlet'
+[2021-08-14 10:18:46:787][INFO ][http-nio-8081-exec-1][org.springframework.web.servlet.DispatcherServlet] Initializing Servlet 'dispatcherServlet'
+[2021-08-14 10:18:46:808][INFO ][http-nio-8081-exec-1][org.springframework.web.servlet.DispatcherServlet] Completed initialization in 21 ms
+[2021-08-14 10:20:27:386][INFO ][Thread-9][org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor] Shutting down ExecutorService 'applicationTaskExecutor'
+[2021-08-14 10:20:27:388][INFO ][Thread-9][com.zaxxer.hikari.HikariDataSource] HikariPool-1 - Shutdown initiated...
+[2021-08-14 10:20:27:406][INFO ][Thread-9][com.zaxxer.hikari.HikariDataSource] HikariPool-1 - Shutdown completed.

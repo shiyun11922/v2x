@@ -23,8 +23,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -72,8 +75,8 @@ public class TrafficCoreDataProController {
 
         TrafficCoreDataPro coreData = trafficCoreDataProServiceImpl.getCoreData(requestVO.getRoadSectionName(), id);
 
-        if(!Objects.isNull(coreData)){
-            return new Result().fail("此记录已存在",400);
+        if (!Objects.isNull(coreData)) {
+            return new Result().fail("此记录已存在", 400);
         }
 
         TrafficCoreDataPro rcdp = new TrafficCoreDataPro();
@@ -81,7 +84,7 @@ public class TrafficCoreDataProController {
         rcdp.setId(id);
 
         boolean save = trafficCoreDataProServiceImpl.save(rcdp);
-        if(save){
+        if (save) {
             return new Result().success("保存成功");
         }
 
@@ -120,6 +123,21 @@ public class TrafficCoreDataProController {
         }
 
         List<TrafficCoreDataPro> roadDetails = trafficCoreDataProServiceImpl.getRoadDetails(roadname, startTimeStamp, endTimeStamp);
+
+        return new Result().success(roadDetails);
+    }
+
+    @GetMapping("/day")
+    public Result getAll(@NotBlank String roadname, @NotBlank String day) {
+
+        LOGGER.info("获取历史数据: day={}", day);
+
+        LocalDate startDate = LocalDate.parse(day, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        LocalDateTime localDateTime = startDate.atStartOfDay();
+        long start = localDateTime.toEpochSecond(ZoneOffset.of("+8"));
+        long end = start + 3600 * 24;
+
+        List<TrafficCoreDataPro> roadDetails = trafficCoreDataProServiceImpl.getRoadDetails(roadname, start, end);
 
         return new Result().success(roadDetails);
     }

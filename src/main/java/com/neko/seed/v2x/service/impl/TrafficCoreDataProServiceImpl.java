@@ -27,7 +27,7 @@ public class TrafficCoreDataProServiceImpl extends ServiceImpl<TrafficCoreDataPr
     @Override
     public List<TrafficCoreDataPro> topRate() {
 
-        return trafficCoreDataProMapper.topRate();
+        return trafficCoreDataProMapper.getLatestDetails();
     }
 
     @Override

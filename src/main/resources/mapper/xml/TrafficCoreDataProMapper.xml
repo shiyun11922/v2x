@@ -9,7 +9,7 @@
         meausre_info, total_cars, predict_total_cars, rec_time
     </sql>
 
-    <select id="topRate"  resultType="com.neko.seed.v2x.entity.ddo.TrafficCoreDataPro">
+    <select id="getLatestDetails" resultType="com.neko.seed.v2x.entity.ddo.TrafficCoreDataPro">
         select id, road_section_name, rec_time, total_cars, nums_blue_car, nums_yell_car
         from traffic_core_data_pro t
         where id = (
@@ -18,7 +18,7 @@
         );
     </select>
 
-    <select id="topRatePro"  resultType="com.neko.seed.v2x.entity.ddo.TrafficCoreDataPro">
+    <select id="getLatestDetailsPro" resultType="com.neko.seed.v2x.entity.ddo.TrafficCoreDataPro">
         SELECT a.id, a.road_section_name, a.total_cars, a.nums_blue_car, a.nums_yell_car, a.rec_time
         FROM (
             SELECT road_section_name, max(id) id
@@ -29,10 +29,13 @@
     </select>
 
     <select id="getLatestData" resultType="com.neko.seed.v2x.entity.ddo.TrafficCoreDataPro">
-        select max(id),
+        select
         <include refid="Base_Column_List" />
         from traffic_core_data_pro
-        where road_section_name = #{roadname};
+        where id = (
+            select max(id) from traffic_core_data_pro
+            where road_section_name = #{roadname}
+        ) and road_section_name = #{roadname};
     </select>
 
 </mapper>

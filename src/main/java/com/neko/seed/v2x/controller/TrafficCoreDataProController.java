@@ -42,13 +42,11 @@ public class TrafficCoreDataProController {
     @PostMapping("/save")
     public Result saveDetail() {
 
-
         return new Result().success();
     }
 
     @GetMapping("/all")
     public Result getDetails(String roadname, Long startTimeStamp, Long endTimeStamp) {
-
 
 
         return new Result().success();

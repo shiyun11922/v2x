@@ -15,9 +15,9 @@ import java.util.List;
  */
 public interface TrafficCoreDataProMapper extends BaseMapper<TrafficCoreDataPro> {
 
-    List<TrafficCoreDataPro> topRate();
+    List<TrafficCoreDataPro> getLatestDetails();
 
-    List<TrafficCoreDataPro> topRatePro();
+    List<TrafficCoreDataPro> getLatestDetailsPro();
 
     TrafficCoreDataPro getLatestData(String roadname);
 }

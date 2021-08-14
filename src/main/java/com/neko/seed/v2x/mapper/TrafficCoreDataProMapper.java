@@ -15,9 +15,12 @@ import java.util.List;
  */
 public interface TrafficCoreDataProMapper extends BaseMapper<TrafficCoreDataPro> {
 
+    TrafficCoreDataPro getLatestData(String roadname);
+
     List<TrafficCoreDataPro> getLatestDetails();
 
     List<TrafficCoreDataPro> getLatestDetailsPro();
 
-    TrafficCoreDataPro getLatestData(String roadname);
+    List<TrafficCoreDataPro> getSpecifiedDetailByRoad(String roadname, List<Long> list);
+
 }

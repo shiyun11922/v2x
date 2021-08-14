@@ -38,4 +38,17 @@
         ) and road_section_name = #{roadname};
     </select>
 
+    <select id="getSpecifiedDetailByRoad" resultType="com.neko.seed.v2x.entity.ddo.TrafficCoreDataPro">
+
+        SELECT
+        <include refid="Base_Column_List" />
+        from traffic_core_data_pro
+        WHERE id IN
+        <foreach collection="list" item="id" index="index" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+        AND road_section_name = #{roadname}
+    </select>
+
+
 </mapper>

@@ -47,15 +47,11 @@ public class CoreDataController {
     private RoadNameService roadNameServiceImpl;
 
 
-    @GetMapping("/{name}")
-    @AuthRequest
-    public Result hello(@PathVariable String name) {
-        Objects.requireNonNull(name, "路段明细明细信息，路段名称不能为空");
-
-        CoreData one = coreDataServiceImpl.getDataByName(name);
-        return new Result().success(one);
-    }
-
+    /**
+     * http://ip:port/v1/traffic/core-data?roadname=aaa
+     * @param roadname
+     * @return
+     */
     @GetMapping("")
     @AuthRequest
     public Result hello2(String roadname) {
@@ -89,15 +85,15 @@ public class CoreDataController {
 
     @GetMapping("/all")
     @AuthRequest
-    public Result all2(String roadname, String startTimeStamp, String endTimeStamp) {
+    public Result all2(String roadname, Long startTimeStamp, Long endTimeStamp) {
+
         Objects.requireNonNull(roadname, "路段明细明细信息，路段名称不能为空");
         LOGGER.info("startTimeStamp={}, endTimeStamp={}", startTimeStamp, endTimeStamp);
-        if (StringUtils.isEmpty(startTimeStamp) || StringUtils.isEmpty(endTimeStamp)) {
+        if (Objects.isNull(startTimeStamp) || Objects.isNull(endTimeStamp)) {
             return new Result().success(coreDataServiceImpl.getDataListByName(roadname));
         }
-        Long start = Long.parseLong(startTimeStamp);
-        Long end = Long.parseLong(endTimeStamp);
-        List<CoreData> dataListByName = coreDataServiceImpl.getDataListByName(roadname, start, end);
+
+        List<CoreData> dataListByName = coreDataServiceImpl.getDataListByName(roadname, startTimeStamp, endTimeStamp);
         return new Result().success(dataListByName);
     }
 

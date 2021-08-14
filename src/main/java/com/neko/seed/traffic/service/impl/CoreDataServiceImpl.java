@@ -130,10 +130,16 @@ public class CoreDataServiceImpl extends ServiceImpl<CoreDataMapper, CoreData> i
 
         Set<String> recent24Hours = this.genDataSet();
 
+        // select * from table where roadname=? order by rec_time;
+
+
         QueryWrapper<CoreData> wrapper = new QueryWrapper<>();
         wrapper.lambda().eq(CoreData::getRoadSectionName, name)
                 .orderByDesc(CoreData::getRecTime);
         List<CoreData> coreDatas = coreDataMapper.selectList(wrapper);
+
+
+
 
         coreDatas.stream()
                 .forEach(

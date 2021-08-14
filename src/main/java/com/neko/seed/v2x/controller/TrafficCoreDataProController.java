@@ -31,12 +31,7 @@ public class TrafficCoreDataProController {
     @Autowired
     private ITrafficCoreDataProService trafficCoreDataProServiceImpl;
 
-    /**
-     * http://ip:port/v1/traffic/traffic-core-data-pro?roadname=aaa
-     *
-     * @param roadname
-     * @return
-     */
+
     @GetMapping("")
     public Result getLatestDetail(String roadname) {
 
@@ -46,6 +41,7 @@ public class TrafficCoreDataProController {
 
     @PostMapping("/save")
     public Result saveDetail() {
+
 
         return new Result().success();
     }
@@ -76,7 +72,6 @@ public class TrafficCoreDataProController {
             v.setNumsBlueCar(c.getNumsBlueCar().intValue());
             v.setNumsYellCar(c.getNumsYellCar().intValue());
             v.setNumsTotalCar(c.getTotalCars().intValue());
-
             topRateVOS.add(v);
         });
 

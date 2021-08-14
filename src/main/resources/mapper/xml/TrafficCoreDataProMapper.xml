@@ -10,10 +10,22 @@
     </sql>
 
     <select id="topRate"  resultType="com.neko.seed.v2x.entity.ddo.TrafficCoreDataPro">
-        SELECT max(id), id, road_section_name, nums_blue_car, nums_yell_car, total_cars
-        FROM traffic_core_data_pro
-        where id > (UNIX_TIMESTAMP(now()) - 3600)
-        GROUP BY road_section_name;
+        select id, road_section_name, rec_time, total_cars, nums_blue_car, nums_yell_car
+        from traffic_core_data_pro t
+        where id = (
+            select max(id) from traffic_core_data_pro
+            where road_section_name = t.road_section_name
+        );
+    </select>
+
+    <select id="topRatePro"  resultType="com.neko.seed.v2x.entity.ddo.TrafficCoreDataPro">
+        SELECT a.id, a.road_section_name, a.total_cars, a.nums_blue_car, a.nums_yell_car, a.rec_time
+        FROM (
+            SELECT road_section_name, max(id) id
+            FROM traffic_core_data_pro
+            GROUP BY road_section_name ) b
+        JOIN traffic_core_data_pro a ON a.id = b.id
+        AND a.road_section_name = b.road_section_name;
     </select>
 
     <select id="getLatestData" resultType="com.neko.seed.v2x.entity.ddo.TrafficCoreDataPro">

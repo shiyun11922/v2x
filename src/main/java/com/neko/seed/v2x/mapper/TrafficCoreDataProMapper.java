@@ -17,5 +17,7 @@ public interface TrafficCoreDataProMapper extends BaseMapper<TrafficCoreDataPro>
 
     List<TrafficCoreDataPro> topRate();
 
+    List<TrafficCoreDataPro> topRatePro();
+
     TrafficCoreDataPro getLatestData(String roadname);
 }

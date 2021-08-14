@@ -20,6 +20,8 @@ public interface ITrafficCoreDataProService extends IService<TrafficCoreDataPro>
 
     TrafficCoreDataPro getLatestData(String roadname);
 
+    TrafficCoreDataPro getCoreData(String roadname, Long timeId);
+
     List<TrafficCoreDataPro> getRoadDetails(String roadname, Long start, Long end);
 
     List<TrafficCoreDataPro> getRoadDetailsOfDay(String roadname, String day);

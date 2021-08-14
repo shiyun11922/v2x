@@ -72,6 +72,12 @@ public class TrafficCoreDataProServiceImpl extends ServiceImpl<TrafficCoreDataPr
     }
 
     @Override
+    public TrafficCoreDataPro getCoreData(String roadname, Long timeId) {
+
+        return trafficCoreDataProMapper.getSpecifiedDetail(roadname, timeId);
+    }
+
+    @Override
     public List<TrafficCoreDataPro> getRoadDetails(String roadname, Long start, Long end) {
 
         List<Long> ids = this.getRangeHourTime(start, end);

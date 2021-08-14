@@ -6,20 +6,25 @@ import com.neko.seed.traffic.entity.ServiceQuality;
 import com.neko.seed.traffic.entity.ServiceTodo;
 import com.neko.seed.traffic.entity.SituationWarning;
 import com.neko.seed.traffic.entity.TopRateVO;
-import com.neko.seed.utils.DateUtils;
 import com.neko.seed.v2x.entity.ddo.TrafficCoreDataPro;
+import com.neko.seed.v2x.entity.vo.TrafficCoreDataProVO;
 import com.neko.seed.v2x.entity.vo.TrafficPredictVO;
 import com.neko.seed.v2x.service.ITrafficCoreDataProService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -55,10 +60,32 @@ public class TrafficCoreDataProController {
     }
 
     @PostMapping("/save")
-    public Result saveDetail() {
+    public Result saveDetail(@RequestBody @Valid TrafficCoreDataProVO requestVO) {
 
+        if (Objects.isNull(requestVO.getRecTime()) || StringUtils.isEmpty(requestVO.getRoadSectionName())) {
+            LOGGER.info("invalid save request, vo={}", requestVO);
+            return new Result().fail("参数错误", 400);
+        }
 
-        return new Result().success();
+        LocalDateTime recTime = requestVO.getRecTime();
+        long id = recTime.toEpochSecond(ZoneOffset.of("+8"));
+
+        TrafficCoreDataPro coreData = trafficCoreDataProServiceImpl.getCoreData(requestVO.getRoadSectionName(), id);
+
+        if(!Objects.isNull(coreData)){
+            return new Result().fail("此记录已存在",400);
+        }
+
+        TrafficCoreDataPro rcdp = new TrafficCoreDataPro();
+        BeanUtils.copyProperties(requestVO, rcdp);
+        rcdp.setId(id);
+
+        boolean save = trafficCoreDataProServiceImpl.save(rcdp);
+        if(save){
+            return new Result().success("保存成功");
+        }
+
+        return new Result().fail("保存异常", 400);
     }
 
 
@@ -172,10 +199,6 @@ public class TrafficCoreDataProController {
         });
         return new Result().success(situationWarnings);
     }
-
-
-
-
 
     @GetMapping("/predict")
     public Result predict(String roadname) {

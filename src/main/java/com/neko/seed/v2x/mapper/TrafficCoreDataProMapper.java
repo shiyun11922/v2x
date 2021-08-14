@@ -1,13 +1,13 @@
 package com.neko.seed.v2x.mapper;
 
-import com.neko.seed.v2x.entity.ddo.TrafficCoreDataPro;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.neko.seed.v2x.entity.ddo.TrafficCoreDataPro;
 
 import java.util.List;
 
 /**
  * <p>
- *  Mapper 接口
+ * Mapper 接口
  * </p>
  *
  * @author Li Jinhui
@@ -22,5 +22,7 @@ public interface TrafficCoreDataProMapper extends BaseMapper<TrafficCoreDataPro>
     List<TrafficCoreDataPro> getLatestDetailsPro();
 
     List<TrafficCoreDataPro> getSpecifiedDetailByRoad(String roadname, List<Long> list);
+
+    TrafficCoreDataPro getSpecifiedDetail(String roadname, Long id);
 
 }

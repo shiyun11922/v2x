@@ -80,7 +80,7 @@ public class MapController {
 
             TrafficCoreDataPro tp = map.get(m.getNAME());
             if (!Objects.isNull(tp) && !Objects.isNull(tp.getTotalCars())) {
-                m.setFlow(map.get(tp.getTotalCars().intValue()));
+                m.setFlow(tp.getTotalCars().intValue());
             }
         });
 

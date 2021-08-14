@@ -50,5 +50,14 @@
         AND road_section_name = #{roadname}
     </select>
 
+    <select id="getSpecifiedDetail" resultType="com.neko.seed.v2x.entity.ddo.TrafficCoreDataPro">
+
+        SELECT
+        <include refid="Base_Column_List" />
+        from traffic_core_data_pro
+        WHERE id = #{id}
+        AND road_section_name = #{roadname};
+    </select>
+
 
 </mapper>

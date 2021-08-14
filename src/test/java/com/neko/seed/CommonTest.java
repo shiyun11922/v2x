@@ -1,6 +1,8 @@
 package com.neko.seed;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -25,7 +27,14 @@ public class CommonTest {
 
         Date parse = sdf2.parse("20210814 10:00:00");
         System.out.println(parse.getTime());
-        System.out.println(parse.getTime()%3600);
+        System.out.println(parse.getTime() % 3600);
+
+
+//获取秒数
+        Long second = LocalDateTime.now().toEpochSecond(ZoneOffset.of("+8"));
+        System.out.println("second" + second);
+//获取毫秒数
+        Long milliSecond = LocalDateTime.now().toInstant(ZoneOffset.of("+8")).toEpochMilli();
 
 
     }

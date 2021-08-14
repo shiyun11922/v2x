@@ -4,6 +4,8 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
@@ -25,6 +27,7 @@ public class TrafficCoreDataProVO implements Serializable {
     /**
      * 路段名称
      */
+    @NotBlank(message = "路段名称不能为空")
     private String roadSectionName;
 
     /**
@@ -33,8 +36,9 @@ public class TrafficCoreDataProVO implements Serializable {
     private Double avgSpeed;
 
     /**
-     * 态势预测
+     * 态势预警
      */
+    @NotNull(message = "态势预警不能为空")
     private Double situationPrediction;
 
     /**
@@ -45,11 +49,13 @@ public class TrafficCoreDataProVO implements Serializable {
     /**
      * 蓝牌车辆数
      */
+    @NotNull(message = "蓝牌车辆数不能为空")
     private Integer numsBlueCar;
 
     /**
      * 黄牌车辆数
      */
+    @NotNull(message = "黄牌车辆数不能为空")
     private Integer numsYellCar;
 
     /**
@@ -65,6 +71,7 @@ public class TrafficCoreDataProVO implements Serializable {
     /**
      * 服务等级
      */
+    @NotBlank(message = "服务等级不能为空")
     private String serviceLevel;
 
     /**
@@ -85,21 +92,25 @@ public class TrafficCoreDataProVO implements Serializable {
     /**
      * 管控举措
      */
+    @NotBlank(message = "管控举措不能为空")
     private String meausreInfo;
 
     /**
      * 车辆总和
      */
+    @NotNull(message = "车辆总和不能为空")
     private Double totalCars;
 
     /**
      * 预测车辆总和
      */
+    @NotNull(message = "预测车辆总和不能为空")
     private Integer predictTotalCars;
 
     /**
      * 记录时间
      */
+    @NotNull(message = "时间不能为空")
     private LocalDateTime recTime;
 
 

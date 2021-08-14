@@ -38,7 +38,7 @@ public class ExceptionsHandler {
     @ExceptionHandler(Exception.class)
     public Result exception(Exception e) {
         logger.error(e.getMessage(), e);
-        return new Result().fail("Error", 500);
+        return new Result().fail(e.getMessage(), 500);
     }
 
     /**
@@ -61,8 +61,8 @@ public class ExceptionsHandler {
      * 请求参数异常
      */
     @ExceptionHandler({HttpMessageNotReadableException.class, MissingServletRequestParameterException.class, MissingServletRequestPartException.class, BindException.class})
-    public Result parameterException() {
-        return new Result().fail("Parameter error", 403);
+    public Result parameterException(Exception e) {
+        return new Result().fail(e.getMessage(), 403);
     }
 
     /**

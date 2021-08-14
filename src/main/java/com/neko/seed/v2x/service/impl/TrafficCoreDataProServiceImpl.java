@@ -100,16 +100,10 @@ public class TrafficCoreDataProServiceImpl extends ServiceImpl<TrafficCoreDataPr
         LocalDateTime localDateTime = startDate.atStartOfDay();
         long start = localDateTime.toEpochSecond(ZoneOffset.of("+8"));
         long end = start + 3600 * 24;
-        
+
         return this.getRoadDetails(roadname, start, end);
     }
 
-    @Override
-    public List<TrafficCoreDataPro> getRoadDetailsOfDay(String roadname, String day) {
-
-
-        return null;
-    }
 
     public List<Long> getRangeHourTime(long start, Long end) {
 

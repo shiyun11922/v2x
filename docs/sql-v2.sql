@@ -7,6 +7,8 @@ create table `traffic_road_name` (
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 insert into traffic_road_name(road_section_name) values('红垦枢纽_机场互通_杭州方向'),('红垦枢纽_机场互通_杭州方向2');
 
+
+
 #核心交通数据宽表
 drop table if exists traffic_core_data_pro;
 create table `traffic_core_data_pro` (

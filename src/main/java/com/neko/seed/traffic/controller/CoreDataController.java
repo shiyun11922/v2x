@@ -102,6 +102,10 @@ public class CoreDataController {
     }
 
 
+    /**
+     * todo  优化toprate 接口
+     * @return
+     */
     @GetMapping("/topRate")
     public Result topRate() {
 

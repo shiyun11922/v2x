@@ -1,7 +1,9 @@
 package com.neko.seed.v2x.mapper;
 
-import com.neko.seed.v2x.entity.TrafficCoreDataPro;
+import com.neko.seed.v2x.entity.ddo.TrafficCoreDataPro;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+
+import java.util.List;
 
 /**
  * <p>
@@ -13,4 +15,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  */
 public interface TrafficCoreDataProMapper extends BaseMapper<TrafficCoreDataPro> {
 
+    List<TrafficCoreDataPro> topRate();
+
+    TrafficCoreDataPro getLatestData(String roadname);
 }

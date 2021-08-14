@@ -1,6 +1,6 @@
 package com.neko.seed.v2x.service.impl;
 
-import com.neko.seed.v2x.entity.TrafficServiceQuality;
+import com.neko.seed.v2x.entity.ddo.TrafficServiceQuality;
 import com.neko.seed.v2x.mapper.TrafficServiceQualityMapper;
 import com.neko.seed.v2x.service.ITrafficServiceQualityService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;

@@ -1,6 +1,6 @@
 package com.neko.seed.v2x.service.impl;
 
-import com.neko.seed.v2x.entity.TrafficSituationWarning;
+import com.neko.seed.v2x.entity.ddo.TrafficSituationWarning;
 import com.neko.seed.v2x.mapper.TrafficSituationWarningMapper;
 import com.neko.seed.v2x.service.ITrafficSituationWarningService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;

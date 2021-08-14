@@ -1,7 +1,10 @@
 package com.neko.seed.v2x.service;
 
-import com.neko.seed.v2x.entity.TrafficCoreDataPro;
+import com.neko.seed.traffic.entity.CoreData;
+import com.neko.seed.v2x.entity.ddo.TrafficCoreDataPro;
 import com.baomidou.mybatisplus.extension.service.IService;
+
+import java.util.List;
 
 /**
  * <p>
@@ -12,5 +15,9 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @since 2021-08-14
  */
 public interface ITrafficCoreDataProService extends IService<TrafficCoreDataPro> {
+
+    List<TrafficCoreDataPro> topRate();
+
+    TrafficCoreDataPro getLatestData(String roadname);
 
 }

@@ -1,4 +1,4 @@
-package com.neko.seed.v2x.entity;
+package com.neko.seed.v2x.entity.ddo;
 
 import java.time.LocalDateTime;
 import java.io.Serializable;
@@ -17,7 +17,7 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-public class TrafficServiceTodo implements Serializable {
+public class TrafficPredict implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -27,9 +27,14 @@ public class TrafficServiceTodo implements Serializable {
     private String roadSectionName;
 
     /**
-     * 管控措施
+     * 车辆总和
      */
-    private String meausreInfo;
+    private Double totalCars;
+
+    /**
+     * 预测车辆总和
+     */
+    private Integer predictTotalCars;
 
     /**
      * 记录时间

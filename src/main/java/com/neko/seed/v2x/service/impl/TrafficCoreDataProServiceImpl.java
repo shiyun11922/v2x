@@ -1,14 +1,17 @@
 package com.neko.seed.v2x.service.impl;
 
-import com.neko.seed.v2x.entity.TrafficCoreDataPro;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.neko.seed.v2x.entity.ddo.TrafficCoreDataPro;
 import com.neko.seed.v2x.mapper.TrafficCoreDataProMapper;
 import com.neko.seed.v2x.service.ITrafficCoreDataProService;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * <p>
- *  服务实现类
+ * 服务实现类
  * </p>
  *
  * @author Li Jinhui
@@ -17,4 +20,20 @@ import org.springframework.stereotype.Service;
 @Service
 public class TrafficCoreDataProServiceImpl extends ServiceImpl<TrafficCoreDataProMapper, TrafficCoreDataPro> implements ITrafficCoreDataProService {
 
+
+    @Autowired
+    private TrafficCoreDataProMapper trafficCoreDataProMapper;
+
+    @Override
+    public List<TrafficCoreDataPro> topRate() {
+
+        return trafficCoreDataProMapper.topRate();
+    }
+
+    @Override
+    public TrafficCoreDataPro getLatestData(String roadname) {
+
+
+        return trafficCoreDataProMapper.getLatestData(roadname);
+    }
 }

@@ -24,11 +24,13 @@ create table `traffic_core_data_pro` (
 	`inhalable_emissions` double(10,2) DEFAULT NULL  COMMENT '可吸入物排放量',
 	`nox_emissions` double(10,4) DEFAULT NULL  COMMENT '氮氧化物排放量',
 	`meausre_info` varchar(200) DEFAULT NULL  COMMENT '管控举措',
-	`total_cars` double(10,2) DEFAULT NULL  COMMENT '车辆总和',
+	`total_cars` int DEFAULT NULL  COMMENT '车辆总和',
 	`predict_total_cars` int unsigned DEFAULT 0  COMMENT '预测车辆总和',
 	`rec_time`  datetime NOT NULL DEFAULT CURRENT_TIMESTAMP()  COMMENT '记录时间',
 	PRIMARY KEY (`id`,`road_section_name`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+insert into traffic_core_data_pro (id, road_section_name, total_cars, nums_blue_car, nums_yell_car) values (1628914045, "红垦枢纽_机场互通_杭州方向", 200, 19, 182);
 
 
 drop table if exists traffic_core_data_hour;

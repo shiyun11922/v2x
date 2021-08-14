@@ -1,10 +1,11 @@
-package com.neko.seed.v2x.entity;
+package com.neko.seed.v2x.entity.vo;
 
-import java.time.LocalDateTime;
-import java.io.Serializable;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+
+import java.io.Serializable;
+import java.time.LocalDateTime;
 
 /**
  * <p>
@@ -17,7 +18,7 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-public class TrafficCoreDataPro implements Serializable {
+public class TrafficCoreDataProVO implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

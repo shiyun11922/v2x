@@ -1,6 +1,6 @@
 package com.neko.seed.v2x.service;
 
-import com.neko.seed.v2x.entity.TrafficRoadName;
+import com.neko.seed.v2x.entity.ddo.TrafficRoadName;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**

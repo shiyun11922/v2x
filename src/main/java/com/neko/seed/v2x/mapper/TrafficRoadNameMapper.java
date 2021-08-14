@@ -1,6 +1,6 @@
 package com.neko.seed.v2x.mapper;
 
-import com.neko.seed.v2x.entity.TrafficRoadName;
+import com.neko.seed.v2x.entity.ddo.TrafficRoadName;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**

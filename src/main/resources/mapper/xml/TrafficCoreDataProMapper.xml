@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neko.seed.v2x.mapper.TrafficCoreDataProMapper">
+
+    <sql id="Base_Column_List">
+        id, road_section_name, avg_speed, situation_prediction, congestion_length,
+        nums_blue_car, nums_yell_car, avg_headway, cart_mix_rate,
+        service_level, carbon_monoxide_emissions, inhalable_emissions, nox_emissions,
+        meausre_info, total_cars, predict_total_cars, rec_time
+    </sql>
+
+    <select id="topRate"  resultType="com.neko.seed.v2x.entity.ddo.TrafficCoreDataPro">
+        SELECT max(id), id, road_section_name, nums_blue_car, nums_yell_car, total_cars
+        FROM traffic_core_data_pro
+        where id > (UNIX_TIMESTAMP(now()) - 3600)
+        GROUP BY road_section_name;
+    </select>
+
+    <select id="getLatestData" resultType="com.neko.seed.v2x.entity.ddo.TrafficCoreDataPro">
+        select max(id),
+        <include refid="Base_Column_List" />
+        from traffic_core_data_pro
+        where road_section_name = #{roadname};
+    </select>
+
+</mapper>

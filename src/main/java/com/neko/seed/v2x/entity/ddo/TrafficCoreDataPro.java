@@ -1,5 +1,6 @@
 package com.neko.seed.v2x.entity.ddo;
 
+import cn.afterturn.easypoi.excel.annotation.Excel;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -83,6 +84,7 @@ public class TrafficCoreDataPro implements Serializable {
     /**
      * 氮氧化物排放量
      */
+    @Excel(name = "氮氧化物排放量", orderNum = "13", width = 15)
     private Double noxEmissions;
 
     /**

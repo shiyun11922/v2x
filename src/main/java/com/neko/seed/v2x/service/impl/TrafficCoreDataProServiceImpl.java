@@ -13,6 +13,10 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Callable;
@@ -87,6 +91,17 @@ public class TrafficCoreDataProServiceImpl extends ServiceImpl<TrafficCoreDataPr
         }
 
         return trafficCoreDataProMapper.getSpecifiedDetailByRoad(roadname, ids);
+    }
+
+    @Override
+    public List<TrafficCoreDataPro> getRoadDetails(String roadname, String day) {
+
+        LocalDate startDate = LocalDate.parse(day, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        LocalDateTime localDateTime = startDate.atStartOfDay();
+        long start = localDateTime.toEpochSecond(ZoneOffset.of("+8"));
+        long end = start + 3600 * 24;
+        
+        return this.getRoadDetails(roadname, start, end);
     }
 
     @Override

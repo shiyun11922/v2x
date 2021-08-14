@@ -1,11 +1,14 @@
 package com.neko.seed.v2x.controller;
 
 
+import com.neko.seed.auth.annotation.AuthRequest;
 import com.neko.seed.base.entity.Result;
+import com.neko.seed.traffic.entity.CoreDataVO;
 import com.neko.seed.traffic.entity.ServiceQuality;
 import com.neko.seed.traffic.entity.ServiceTodo;
 import com.neko.seed.traffic.entity.SituationWarning;
 import com.neko.seed.traffic.entity.TopRateVO;
+import com.neko.seed.utils.ExcelUtils;
 import com.neko.seed.v2x.entity.ddo.TrafficCoreDataPro;
 import com.neko.seed.v2x.entity.vo.TrafficCoreDataProVO;
 import com.neko.seed.v2x.entity.vo.TrafficPredictVO;
@@ -22,12 +25,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
-import java.time.LocalDate;
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -132,12 +135,7 @@ public class TrafficCoreDataProController {
 
         LOGGER.info("获取历史数据: day={}", day);
 
-        LocalDate startDate = LocalDate.parse(day, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-        LocalDateTime localDateTime = startDate.atStartOfDay();
-        long start = localDateTime.toEpochSecond(ZoneOffset.of("+8"));
-        long end = start + 3600 * 24;
-
-        List<TrafficCoreDataPro> roadDetails = trafficCoreDataProServiceImpl.getRoadDetails(roadname, start, end);
+        List<TrafficCoreDataPro> roadDetails = trafficCoreDataProServiceImpl.getRoadDetails(roadname, day);
 
         return new Result().success(roadDetails);
     }
@@ -251,6 +249,29 @@ public class TrafficCoreDataProController {
         });
 
         return new Result().success(resultVO);
+    }
+
+    @GetMapping("/export")
+    @AuthRequest
+    public void exportExcel(HttpServletResponse response,
+                            @NotBlank String roadname, @NotBlank String day) throws IOException {
+
+        long startTS = System.currentTimeMillis();
+        String title = roadname + "路段车况明细表(" + day + ")";
+        List<TrafficCoreDataPro> dls = trafficCoreDataProServiceImpl.getRoadDetails(roadname, day);
+
+        List<TrafficCoreDataProVO> coreDataVOS = new ArrayList<>();
+        dls.stream().forEach(
+                d -> {
+                    TrafficCoreDataProVO proVO = new TrafficCoreDataProVO();
+                    BeanUtils.copyProperties(d, proVO);
+                    coreDataVOS.add(proVO);
+                }
+        );
+
+        LOGGER.info("导出" + title + ", excel所花时间：" + (System.currentTimeMillis() - startTS));
+
+        ExcelUtils.exportExcel(coreDataVOS, title, "路段车况明细表", CoreDataVO.class, title, response);
     }
 
 

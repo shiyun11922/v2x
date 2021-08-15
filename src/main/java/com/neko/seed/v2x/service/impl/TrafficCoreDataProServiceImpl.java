@@ -105,6 +105,11 @@ public class TrafficCoreDataProServiceImpl extends ServiceImpl<TrafficCoreDataPr
     }
 
 
+    @Override
+    public int generateHourData(Long startDate, Long endDate) {
+        return trafficCoreDataProMapper.generateHourDataBySepcificDate(startDate,endDate);
+    }
+
     public List<Long> getRangeHourTime(long start, Long end) {
 
         ArrayList<Long> ids = new ArrayList<>();
@@ -115,4 +120,6 @@ public class TrafficCoreDataProServiceImpl extends ServiceImpl<TrafficCoreDataPr
         }
         return ids;
     }
+
+
 }

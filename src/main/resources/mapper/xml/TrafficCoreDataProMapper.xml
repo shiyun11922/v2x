@@ -59,5 +59,35 @@
         AND road_section_name = #{roadname};
     </select>
 
+    <select id="generateHourDataBySepcificDate" resultType="integer">
+        INSERT INTO traffic_core_data_hour (
+            `id`,
+            `road_section_name`,
+            `avg_speed`,
+            `situation_prediction`,
+            `congestion_length`,
+            `nums_blue_car`,
+            `nums_yell_car`,
+            `avg_headway`,
+            `cart_mix_rate`,
+            `service_level`,
+            `carbon_monoxide_emissions`,
+            `inhalable_emissions`,
+            `nox_emissions`,
+            `meausre_info`,
+            `total_cars`,
+            `predict_total_cars`,
+            `rec_time`
+        ) SELECT
+            *
+        FROM
+            traffic_core_data_pro
+        WHERE
+            id &gt;= #{startDate} and id &lt; #{endDate}
+        order by id asc
+        limit 1;
+    </select>
+
+
 
 </mapper>

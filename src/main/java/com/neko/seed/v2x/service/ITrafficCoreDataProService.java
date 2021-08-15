@@ -26,4 +26,5 @@ public interface ITrafficCoreDataProService extends IService<TrafficCoreDataPro>
 
     List<TrafficCoreDataPro> getRoadDetails(String roadname, String day);
 
+    int generateHourData(Long startDate,Long endDate);
 }

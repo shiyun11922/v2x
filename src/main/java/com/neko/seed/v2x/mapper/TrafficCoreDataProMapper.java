@@ -2,7 +2,6 @@ package com.neko.seed.v2x.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.neko.seed.v2x.entity.ddo.TrafficCoreDataPro;
-
 import java.util.List;
 
 /**
@@ -25,4 +24,5 @@ public interface TrafficCoreDataProMapper extends BaseMapper<TrafficCoreDataPro>
 
     TrafficCoreDataPro getSpecifiedDetail(String roadname, Long id);
 
+    int generateHourDataBySepcificDate(Long startDate,Long endDate);
 }
